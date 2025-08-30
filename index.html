@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Network Intrusion Detection System | CodeAlpha</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    </head>
+<body>
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="logo">
+            <i class="fas fa-shield-alt"></i>
+            <span class="logo-text">NIDS Dashboard</span>
+        </div>
+        
+        <h3 class="menu-title">Main</h3>
+        <ul class="menu-items">
+            <li><a href="#" class="active"><i class="fas fa-home"></i> <span>Dashboard</span></a></li>
+            <li><a href="#"><i class="fas fa-network-wired"></i> <span>Network Traffic</span></a></li>
+            <li><a href="#"><i class="fas fa-bell"></i> <span>Alerts</span></a></li>
+            <li><a href="#"><i class="fas fa-list"></i> <span>Rules</span></a></li>
+        </ul>
+        
+        <h3 class="menu-title">Configuration</h3>
+        <ul class="menu-items">
+            <li><a href="#"><i class="fas fa-cog"></i> <span>Settings</span></a></li>
+            <li><a href="#"><i class="fas fa-sliders-h"></i> <span>Rule Management</span></a></li>
+            <li><a href="#"><i class="fas fa-history"></i> <span>Logs</span></a></li>
+            <li><a href="#"><i class="fas fa-chart-bar"></i> <span>Reports</span></a></li>
+        </ul>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="header">
+            <div class="page-title">
+                <h1>Network Intrusion Detection System</h1>
+                <p>Monitor, detect, and respond to network threats in real-time</p>
+            </div>
+            <div class="user-info">
+                <img src="images/image.png" alt="User">
+                <div>
+                    <div>Network Admin</div>
+                    <small>Security Operator</small>
+                </div>
+            </div>
+        </div>
+
+        <!-- Stats Overview -->
+        <div class="dashboard-grid">
+            <div class="card stat-card">
+                <div class="stat-icon critical">
+                    <i class="fas fa-bug"></i>
+                </div>
+                <div class="stat-info">
+                    <h3>8</h3>
+                    <p>Critical Threats</p>
+                </div>
+            </div>
+            
+            <div class="card stat-card">
+                <div class="stat-icon high">
+                    <i class="fas fa-exclamation-triangle"></i>
+                </div>
+                <div class="stat-info">
+                    <h3>23</h3>
+                    <p>Security Alerts</p>
+                </div>
+            </div>
+            
+            <div class="card stat-card">
+                <div class="stat-icon medium">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <div class="stat-info">
+                    <h3>142</h3>
+                    <p>Active Rules</p>
+                </div>
+            </div>
+            
+            <div class="card stat-card">
+                <div class="stat-icon low">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <div class="stat-info">
+                    <h3>97%</h3>
+                    <p>System Uptime</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Network Traffic Visualization -->
+        <h2 class="section-title">Live Network Traffic</h2>
+        <div class="traffic-visualization">
+            <canvas class="network-canvas" id="networkCanvas"></canvas>
+            <div class="traffic-stats">
+                <div class="traffic-stat">
+                    <h4 id="packetsPerSecond">128</h4>
+                    <p>Packets/Sec</p>
+                </div>
+                <div class="traffic-stat">
+                    <h4 id="currentThreats">5</h4>
+                    <p>Active Threats</p>
+                </div>
+                <div class="traffic-stat">
+                    <h4 id="bandwidthUsage">42</h4>
+                    <p>MBps Usage</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recent Alerts -->
+        <h2 class="section-title">Recent Security Alerts</h2>
+        <div class="alerts-container">
+            <div class="alert-item">
+                <div class="alert-info">
+                    <div class="alert-title">Possible SQL Injection Attempt</div>
+                    <div class="alert-details">Source: 192.168.1.15 → Destination: 10.0.0.5:3306</div>
+                </div>
+                <div class="alert-time">2 minutes ago</div>
+            </div>
+            
+            <div class="alert-item medium">
+                <div class="alert-info">
+                    <div class="alert-title">Port Scan Detected</div>
+                    <div class="alert-details">Source: 45.33.21.104 → Scanning multiple ports</div>
+                </div>
+                <div class="alert-time">15 minutes ago</div>
+            </div>
+            
+            <div class="alert-item">
+                <div class="alert-info">
+                    <div class="alert-title">Known Malware Signature</div>
+                    <div class="alert-details">Source: 172.16.0.23 → Downloading suspicious file</div>
+                </div>
+                <div class="alert-time">42 minutes ago</div>
+            </div>
+            
+            <div class="alert-item low">
+                <div class="alert-info">
+                    <div class="alert-title">Policy Violation</div>
+                    <div class="alert-details">User: jsmith → Attempted access to restricted resource</div>
+                </div>
+                <div class="alert-time">1 hour ago</div>
+            </div>
+        </div>
+
+        <!-- Configuration Section -->
+        <h2 class="section-title">NIDS Configuration</h2>
+        <div class="config-section">
+            <p>Configure your Network Intrusion Detection System settings and rules. The system is currently running in <strong>Active Detection</strong> mode.</p>
+            
+            <div class="config-grid">
+                <div class="config-card">
+                    <div class="config-icon">
+                        <i class="fas fa-sliders-h"></i>
+                    </div>
+                    <h3>Detection Mode</h3>
+                    <p>Set the sensitivity and mode of threat detection</p>
+                    <button class="btn btn-outline">Configure</button>
+                </div>
+                
+                <div class="config-card">
+                    <div class="config-icon">
+                        <i class="fas fa-bell"></i>
+                    </div>
+                    <h3>Alert Settings</h3>
+                    <p>Manage how and when you receive notifications</p>
+                    <button class="btn btn-outline">Configure</button>
+                </div>
+                
+                <div class="config-card">
+                    <div class="config-icon">
+                        <i class="fas fa-list"></i>
+                    </div>
+                    <h3>Rule Management</h3>
+                    <p>Create and customize detection rules</p>
+                    <button class="btn btn-outline">Manage Rules</button>
+                </div>
+                
+                <div class="config-card">
+                    <div class="config-icon">
+                        <i class="fas fa-plug"></i>
+                    </div>
+                    <h3>Response Actions</h3>
+                    <p>Define automatic responses to threats</p>
+                    <button class="btn btn-outline">Configure</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Rules Section -->
+        <h2 class="section-title">Active Detection Rules</h2>
+        <div class="rules-container">
+            <div class="rule-item">
+                <div class="rule-header">
+                    <div class="rule-title">SQL Injection Detection</div>
+                    <div class="rule-status">Active</div>
+                </div>
+                <p>Detects common SQL injection patterns in HTTP requests</p>
+                <div class="rule-content">
+                    alert tcp any any -> any 80 (msg:"SQL Injection Detected"; content:"union"; content:"select"; nocase; classtype:web-application-attack; sid:1000001; rev:1;)
+                </div>
+                <button class="btn btn-outline">Edit Rule</button>
+                <button class="btn btn-danger">Disable</button>
+            </div>
+            
+            <div class="rule-item">
+                <div class="rule-header">
+                    <div class="rule-title">Port Scan Detection</div>
+                    <div class="rule-status">Active</div>
+                </div>
+                <p>Detects horizontal and vertical port scanning activities</p>
+                <div class="rule-content">
+                    alert ip any any -> any any (msg:"Port Scan Detected"; detection_filter: track by_src, count 5, seconds 10; classtype:attempted-recon; sid:1000002; rev:1;)
+                </div>
+                <button class="btn btn-outline">Edit Rule</button>
+                <button class="btn btn-danger">Disable</button>
+            </div>
+            
+            <div class="rule-item">
+                <div class="rule-header">
+                    <div class="rule-title">Malware Download Attempt</div>
+                    <div class="rule-status">Active</div>
+                </div>
+                <p>Flags known malicious file downloads and patterns</p>
+                <div class="rule-content">
+                    alert tcp any any -> any any (msg:"Known Malware Download"; content:"|0f 00 00 00 0f 00 00 00|"; content:"exe"; classtype:trojan-activity; sid:1000003; rev:1;)
+                </div>
+                <button class="btn btn-outline">Edit Rule</button>
+                <button class="btn btn-danger">Disable</button>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Network visualization
+        const canvas = document.getElementById('networkCanvas');
+        const ctx = canvas.getContext('2d');
+        
+        // Set canvas size
+        function resizeCanvas() {
+            canvas.width = canvas.parentElement.offsetWidth;
+            canvas.height = canvas.parentElement.offsetHeight;
+        }
+        
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+        
+        // Network nodes and connections
+        const nodes = [];
+        const connections = [];
+        
+        // Create initial nodes
+        for (let i = 0; i < 15; i++) {
+            nodes.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                radius: 3 + Math.random() * 4,
+                speedX: (Math.random() - 0.5) * 0.5,
+                speedY: (Math.random() - 0.5) * 0.5,
+                color: i === 0 ? '#e74c3c' : (i < 5 ? '#3498db' : '#2ecc71')
+            });
+        }
+        
+        // Create connections
+        for (let i = 0; i < 25; i++) {
+            connections.push({
+                from: Math.floor(Math.random() * nodes.length),
+                to: Math.floor(Math.random() * nodes.length),
+                width: Math.random() * 2,
+                active: Math.random() > 0.7
+            });
+        }
+        
+        // Animation function
+        function animateNetwork() {
+            // Clear canvas
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            // Update node positions
+            for (const node of nodes) {
+                node.x += node.speedX;
+                node.y += node.speedY;
+                
+                // Bounce off walls
+                if (node.x < 0 || node.x > canvas.width) node.speedX *= -1;
+                if (node.y < 0 || node.y > canvas.height) node.speedY *= -1;
+            }
+            
+            // Draw connections
+            for (const conn of connections) {
+                const from = nodes[conn.from];
+                const to = nodes[conn.to];
+                
+                ctx.beginPath();
+                ctx.moveTo(from.x, from.y);
+                ctx.lineTo(to.x, to.y);
+                ctx.strokeStyle = conn.active ? 'rgba(231, 76, 60, 0.7)' : 'rgba(52, 152, 219, 0.3)';
+                ctx.lineWidth = conn.width;
+                ctx.stroke();
+                
+                // Randomly change activity
+                if (Math.random() > 0.98) conn.active = !conn.active;
+            }
+            
+            // Draw nodes
+            for (const node of nodes) {
+                ctx.beginPath();
+                ctx.arc(node.x, node.y, node.radius, 0, Math.PI * 2);
+                ctx.fillStyle = node.color;
+                ctx.fill();
+            }
+            
+            // Add data points occasionally
+            if (Math.random() > 0.95) {
+                ctx.beginPath();
+                const x = Math.random() * canvas.width;
+                const y = Math.random() * canvas.height;
+                ctx.arc(x, y, 2, 0, Math.PI * 2);
+                ctx.fillStyle = 'rgba(241, 196, 15, 0.8)';
+                ctx.fill();
+            }
+            
+            requestAnimationFrame(animateNetwork);
+        }
+        
+        // Start animation
+        animateNetwork();
+        
+        // Update traffic stats
+        function updateStats() {
+            document.getElementById('packetsPerSecond').textContent = 
+                Math.floor(120 + Math.random() * 20);
+            document.getElementById('currentThreats').textContent = 
+                Math.floor(3 + Math.random() * 4);
+            document.getElementById('bandwidthUsage').textContent = 
+                Math.floor(35 + Math.random() * 15);
+                
+            setTimeout(updateStats, 3000);
+        }
+        
+        updateStats();
+        
+        // Simulate new alerts
+        function simulateNewAlert() {
+            if (Math.random() > 0.7) {
+                const alertsContainer = document.querySelector('.alerts-container');
+                const newAlert = document.createElement('div');
+                newAlert.className = 'alert-item';
+                
+                const alertTypes = [
+                    {title: 'Suspicious HTTP Request', details: 'Source: 192.168.1.23 → Abnormal HTTP method', class: ''},
+                    {title: 'Possible XSS Attempt', details: 'Source: 10.0.0.42 → Script tags in form data', class: 'medium'},
+                    {title: 'Brute Force Attempt', details: 'Source: 45.79.131.244 → Multiple failed logins', class: ''},
+                    {title: 'Data Exfiltration', details: 'Source: 172.16.0.15 → Large outbound transfer', class: ''}
+                ];
+                
+                const alert = alertTypes[Math.floor(Math.random() * alertTypes.length)];
+                
+                newAlert.classList.add('alert-item');
+                if (alert.class) newAlert.classList.add(alert.class);
+                
+                newAlert.innerHTML = `
+                    <div class="alert-info">
+                        <div class="alert-title">${alert.title}</div>
+                        <div class="alert-details">${alert.details}</div>
+                    </div>
+                    <div class="alert-time">Just now</div>
+                `;
+                
+                alertsContainer.prepend(newAlert);
+                
+                // Remove oldest alert if more than 5
+                if (alertsContainer.children.length > 5) {
+                    alertsContainer.removeChild(alertsContainer.lastChild);
+                }
+            }
+            
+            setTimeout(simulateNewAlert, 10000 + Math.random() * 15000);
+        }
+        
+        simulateNewAlert();
+        
+        // Rule management
+        document.querySelectorAll('.btn-danger').forEach(button => {
+            button.addEventListener('click', function() {
+                const ruleItem = this.closest('.rule-item');
+                const status = ruleItem.querySelector('.rule-status');
+                
+                if (status.textContent === 'Active') {
+                    status.textContent = 'Disabled';
+                    status.classList.add('disabled');
+                    this.textContent = 'Enable';
+                } else {
+                    status.textContent = 'Active';
+                    status.classList.remove('disabled');
+                    this.textContent = 'Disable';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
